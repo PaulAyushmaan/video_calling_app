@@ -1,10 +1,7 @@
-const express=require('express');
-const app=express();
+const {Server}=require("socket.io");
 
-app.get('/',(req,res)=>{
-  res.send('Hello World');
-});
+const io = new Server(3000);
 
-app.listen(3000,()=>{
-  console.log('Server is running on port 3000');
+io.on("connection", (socket) => {
+  console.log(`Socket connected: ${socket.id}`);
 });
